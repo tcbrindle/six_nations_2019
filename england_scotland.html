@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Six Nations 2019 Choose your own Adventure</title>
+</head>
+
+<body>
+    <h1><em>Choose your own Adventure:</em> Six Nations 2019 Finale Edition</h1>
+    <p>
+        Across the land, another battle is about to commence. The well-heeled of Middle England polish off another
+        cocktail sausage, drain their reasonably-priced pinot grigio and stagger arrogantly into the stands of HQ. A
+        single verse of their chariot-themed battle cry rings ad nauseum around the arena as their fifteen heroes in
+        white lay siege to the depleted forces of the Northern Land. What is the result?
+    </p>
+
+    <ul>
+        <li><a href="england_win.html">England win with a try bonus point</a></li>
+        <li><a href="" id="ln_eng_no_bp">England win (no bonus point)</a></li>
+        <li><a href="" id="ln_draw">It's a draw</a></li>
+        <li><a href="" id="ln_scot">World peace is declared, cancer is cured, you win the lottery and that really hot
+                guy/girl from
+                work texts to see if you want to hang out later. Also, Scotland's three remaining uninjured players
+                somehow win the game.</a></li>
+    </ul>
+
+    <script>
+        function getQuerystring(key, default_) {
+            if (default_ == null) default_ = "";
+            key = key.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regex = new RegExp("[\\?&]" + key + "=([^&#]*)");
+            var qs = regex.exec(window.location.href);
+            if (qs == null)
+                return default_;
+            else
+                return qs[1];
+        }
+
+        var wi = getQuerystring("wi");
+        if (wi == "ire_bp") {
+            document.getElementById("ln_eng_no_bp").href = "ireland_by_64.html";
+            document.getElementById("ln_draw").href = "ireland_win.html";
+            document.getElementById("ln_scot").href = "ireland_win.html"
+        } else if (wi == "ire") {
+            var wal_bp = getQuerystring("wal_bp");
+            document.getElementById("ln_eng_no_bp").href = "england_win.html";
+            if (wal_bp == "2") {
+                document.getElementById("ln_draw").href = "england_draw_with_bp.html?else=wal"
+                document.getElementById("ln_scot").href = "wales_win.html";
+            } else {
+                document.getElementById("ln_draw").href = "england_draw_with_bp.html?else=ire"
+                document.getElementById("ln_scot").href = "ireland_win.html";
+            }
+        } else if (wi == "draw") {
+            var wal_bp = getQuerystring("wal_bp");
+            document.getElementById("ln_eng_no_bp").href = "england_win.html";
+            document.getElementById("ln_scot").href = "wales_win.html";
+            if (wal_bp == "1") {
+                document.getElementById("ln_draw").href = "wales_win.html";
+            } else {
+                document.getElementById("ln_draw").href = "england_draw_with_bp.html?else=wal";
+            }
+        }
+    </script>
+
+</body>

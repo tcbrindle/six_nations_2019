@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Six Nations 2019 Choose your own Adventure</title>
+</head>
+
+<body>
+
+    <h1><em>Choose your own Adventure:</em> Six Nations 2019 Finale Edition</h1>
+    <p>
+        The plucky Scots have held the white horde at bay, and managed to secure a draw at Twickenham
+    </p>
+    <p>
+        But did England score four tries or more during the game?
+    </p>
+
+    <ul>
+        <li>
+            <a href="england_win.html">Yes</a>
+        </li>
+        <li><a href="oops.html" id="li_no_bp">No</a></li>
+    </ul>
+
+    <script>
+        function getQuerystring(key, default_) {
+            if (default_ == null) default_ = "";
+            key = key.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regex = new RegExp("[\\?&]" + key + "=([^&#]*)");
+            var qs = regex.exec(window.location.href);
+            if (qs == null)
+                return default_;
+            else
+                return qs[1];
+        }
+
+        var next = getQuerystring("else");
+
+        if (next == "ire") {
+            document.getElementById("li_no_bp").href = "ireland_win.html";
+        } else if (next == "wal") {
+            document.getElementById("li_no_bp").href = "wales_win.html";
+        }
+    </script>
+
+
+</body>
